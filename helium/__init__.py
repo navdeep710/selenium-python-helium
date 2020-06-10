@@ -112,7 +112,7 @@ def start_chrome(url=None, headless=False, options=None):
 
 		kill_browser()
 	"""
-	return _get_api_impl().start_chrome_impl(url, headless, options)
+	return _get_api_impl().start_crome_impl(url, headless, options)
 
 def go_to(url):
 	"""

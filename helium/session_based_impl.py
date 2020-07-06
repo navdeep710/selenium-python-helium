@@ -294,7 +294,7 @@ def doubleclick(element, session_id=None):
 def drag(element, to, session_id=None):
     """
     :param element: The element or point to drag.
-    :type element: str, unicode, :py:class:`HTMLElement`, \
+    :type element: str, unicode, :py:class:`HTMLElement`, \fpo
 :py:class:`selenium.webdriver.remote.webelement.WebElement` or :py:class:`Point`
     :param to: The element or point to drag to.
     :type to: str, unicode, :py:class:`HTMLElement`, \

@@ -1223,7 +1223,6 @@ def kill_browser(session_id=None):
     _API_IMPL.pop(session_id)
 
 
-
 def highlight(element, session_id=None):
     """
     :param element: The element to highlight.
@@ -1238,14 +1237,23 @@ def highlight(element, session_id=None):
 
 
 def _get_api_impl(session_id=None):
-    global _API_IMPL
+    # global _API_IMPL
     if session_id not in _API_IMPL:
         _API_IMPL[session_id] = APIImpl()
+
     return _API_IMPL[session_id]
 
+
+def _is_session_alive(session_id=None):
+    # global _API_IMPL
+    return session_id in _API_IMPL
+
+
 def _remove_session_id(session_id):
-    kill_browser(session_id)
-    _API_IMPL.pop(session_id)
+    if session_id in _API_IMPL:
+        kill_browser(session_id)
+        _API_IMPL.pop(session_id)
+
 
 
 _API_IMPL = {}

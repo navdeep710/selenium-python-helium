@@ -1252,7 +1252,7 @@ def _is_session_alive(session_id=None):
 def _remove_session_id(session_id):
     if session_id in _API_IMPL:
         kill_browser(session_id)
-        _API_IMPL.pop(session_id)
+        # _API_IMPL.pop(session_id)
 
 
 

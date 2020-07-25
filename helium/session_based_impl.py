@@ -778,11 +778,11 @@ class ListItem(HTMLElement):
 
     def __init__(
             self, text=None, below=None, to_right_of=None, above=None,
-            to_left_of=None
+            to_left_of=None, session_id=None
     ):
         super(ListItem, self).__init__(
             below=below, to_right_of=to_right_of, above=above,
-            to_left_of=to_left_of
+            to_left_of=to_left_of, session_id=session_id
         )
         self._args.append(text)
 
@@ -932,11 +932,11 @@ class ComboBox(HTMLElement):
 
     def __init__(
             self, label=None, below=None, to_right_of=None, above=None,
-            to_left_of=None
+            to_left_of=None, session_id=None
     ):
         super(ComboBox, self).__init__(
             below=below, to_right_of=to_right_of, above=above,
-            to_left_of=to_left_of
+            to_left_of=to_left_of, session_id=session_id
         )
         self._args.append(label)
 
@@ -986,11 +986,11 @@ class CheckBox(HTMLElement):
 
     def __init__(
             self, label=None, below=None, to_right_of=None, above=None,
-            to_left_of=None
+            to_left_of=None, session_id=None
     ):
         super(CheckBox, self).__init__(
             below=below, to_right_of=to_right_of, above=above,
-            to_left_of=to_left_of
+            to_left_of=to_left_of, session_id=session_id
         )
         self._args.append(label)
 
@@ -1030,11 +1030,11 @@ class RadioButton(HTMLElement):
 
     def __init__(
             self, label=None, below=None, to_right_of=None, above=None,
-            to_left_of=None
+            to_left_of=None, session_id=None
     ):
         super(RadioButton, self).__init__(
             below=below, to_right_of=to_right_of, above=above,
-            to_left_of=to_left_of
+            to_left_of=to_left_of, session_id=session_id
         )
         self._args.append(label)
 

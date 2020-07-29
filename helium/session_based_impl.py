@@ -39,6 +39,7 @@ __all__ = [
     'PAGE_UP', 'PAUSE', 'RETURN', 'RIGHT', 'SEMICOLON', 'SEPARATOR', 'SHIFT',
     'SPACE', 'SUBTRACT', 'TAB', 'UP'
 ]
+_API_IMPL = {}
 
 
 def start_firefox(url=None, headless=False, options=None, session_id=None):
@@ -1237,7 +1238,7 @@ def highlight(element, session_id=None):
 
 
 def _get_api_impl(session_id=None):
-    # global _API_IMPL
+    global _API_IMPL
     if session_id not in _API_IMPL:
         _API_IMPL[session_id] = APIImpl()
 
@@ -1245,15 +1246,11 @@ def _get_api_impl(session_id=None):
 
 
 def _is_session_alive(session_id=None):
-    # global _API_IMPL
+    global _API_IMPL
     return session_id in _API_IMPL
 
 
 def _remove_session_id(session_id):
+    global _API_IMPL
     if session_id in _API_IMPL:
         kill_browser(session_id)
-        # _API_IMPL.pop(session_id)
-
-
-
-_API_IMPL = {}

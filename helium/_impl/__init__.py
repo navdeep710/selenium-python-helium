@@ -98,12 +98,12 @@ class APIImpl:
 			self._ensure_driver_is_executable(driver)
 			result['executable_path'] = driver
 		return result
-	def start_chrome_impl(self, url=None, headless=False, options=None):
-		chrome_driver = self._start_chrome_driver(headless, options)
+	def start_chrome_impl(self, url=None, headless=False, options=None, desired_capabilities=None):
+		chrome_driver = self._start_chrome_driver(headless, options, desired_capabilities)
 		return self._start(chrome_driver, url)
-	def _start_chrome_driver(self, headless, options):
+	def _start_chrome_driver(self, headless, options, desired_capabilities):
 		chrome_options = self._get_chrome_options(headless, options)
-		kwargs = self._get_chrome_driver_kwargs(chrome_options)
+		kwargs = self._get_chrome_driver_kwargs(chrome_options, desired_capabilities)
 		result = Chrome(**kwargs)
 		atexit.register(self._kill_service, result.service)
 		return result
@@ -114,9 +114,10 @@ class APIImpl:
 		if headless:
 			result.add_argument('--headless')
 		return result
-	def _get_chrome_driver_kwargs(self, chrome_options):
+	def _get_chrome_driver_kwargs(self, chrome_options, desired_capabilities):
 		result = {
-			'options': chrome_options
+			'options': chrome_options,
+			'desired_capabilities': desired_capabilities
 		}
 		driver = self._locate_web_driver('chromedriver')
 		if exists(driver):

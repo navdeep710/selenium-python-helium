@@ -79,7 +79,7 @@ def start_firefox(url=None, headless=False, options=None, session_id=None):
     return _get_api_impl(session_id).start_firefox_impl(url, headless, options)
 
 
-def start_chrome(url=None, headless=False, options=None, session_id=None):
+def start_chrome(url=None, headless=False, options=None, desired_capabilities=None, session_id=None):
     """
     :param url: URL to open.
     :type url: str
@@ -114,7 +114,7 @@ def start_chrome(url=None, headless=False, options=None, session_id=None):
 
         kill_browser()
     """
-    return _get_api_impl(session_id).start_chrome_impl(url, headless, options)
+    return _get_api_impl(session_id).start_chrome_impl(url, headless, options, desired_capabilities)
 
 
 def go_to(url, session_id=None):

@@ -1084,8 +1084,8 @@ class Alert(GUIElement):
     Lets you identify and interact with JavaScript alert boxes.
     """
 
-    def __init__(self, search_text=None):
-        super(Alert, self).__init__()
+    def __init__(self, search_text=None,session_id=None):
+        super(Alert, self).__init__(session_id=session_id)
         self._args.append(search_text)
 
     @property

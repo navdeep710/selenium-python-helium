@@ -1252,10 +1252,17 @@ def _is_session_alive(session_id=None):
 
 def _is_session_valid(session_id=None):
     global _API_IMPL
-    if session_id in _API_IMPL:
-        driver = get_driver(session_id)
-        return len(driver.window_handles) > 0
-    return False
+    try:
+        if session_id in _API_IMPL:
+            driver = get_driver(session_id)
+            num_handles = len(driver.window_handles) > 0
+            if num_handles == 0:
+                _remove_session_id(session_id)
+                return False
+            else:
+                return True
+    except:
+        return False
 
 
 def _remove_session_id(session_id):
